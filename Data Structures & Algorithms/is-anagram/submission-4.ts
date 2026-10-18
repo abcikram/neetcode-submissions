@@ -1,38 +1,45 @@
-// class Solution {
-//     /**
-//      * @param {string} s
-//      * @param {string} t
-//      * @return {boolean}
-//      */
-//     isAnagram(s: string, t: string): boolean {
-//         if(s.length !== t.length) return false;
+/* with map solution
+*/
+class Solution {
+    /**
+     * @param {string} s
+     * @param {string} t
+     * @return {boolean}
+     */
+    isAnagram(s: string, t: string): boolean {
+        if(s.length !== t.length) return false;
         
-//         let map = new Map<string, number>();
-//         // if we use frequency counting method
+        let map = new Map<string, number>();
+        // if we use frequency counting method
 
-//         for(let char of s){
-//             map.set(char,(map.get(char) || 0) +1)
-//         }
+        for(let char of s){
+            map.set(char,(map.get(char) || 0) +1)
+        }
 
-//         for(let char of t) {
+        for(let char of t) {
 
-//             if(!map.has(char)){
-//                 return false
-//             }
+            if(!map.has(char)){
+                return false
+            }
            
-//             map.set(char, (map.get(char))-1);
+            map.set(char, (map.get(char))-1);
 
-//             if(map.get(char) === 0) {
-//                 map.delete(char)
-//             }
+            if(map.get(char) === 0) {
+                map.delete(char)
+            }
             
-//         }
-//         return true 
-//     }
-// }
+        }
+        return true 
+    }
+}
 
-// // The time complexity is O(n), and the auxiliary space complexity is O(k), where k is the number of distinct characters.
+// The time complexity is O(n), and the auxiliary space complexity is O(k), where k is the number of distinct characters.
 
+
+
+
+/* without map solution
+*/
 class Solution {
     isAnagram(s: string, t: string): boolean {
         if (s.length !== t.length) {
@@ -54,4 +61,5 @@ class Solution {
     }
 }
 
+// Time complexity O(n)   Space complexity O(1)
 
