@@ -1,0 +1,31 @@
+class Solution {
+    /**
+     * @param {number[]} nums
+     * @return {number[]}
+     */
+    productExceptSelf(nums) {
+        const output:number[] = [];
+
+        /**
+         * Do the prefix (means left side of all element) 
+        */
+        let prefix = 1
+
+        for(let i=0;i<nums.length;i++){
+           output[i] = prefix;
+           prefix *= nums[i];
+        }
+          /**
+           * Do the suffix 
+           */
+        let suffix = 1;
+
+        for(let i=nums.length-1;i>=0;i--){
+            output[i] *= suffix;
+            suffix *= nums[i];
+        }
+
+        return output;
+    }
+}
+
